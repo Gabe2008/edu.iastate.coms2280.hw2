@@ -57,20 +57,6 @@ public class CompareSorters
 		//
 		// A sample scenario is given in Section 2 of the project description.
 
-		Point[] points = {
-				new Point(3, 2),
-				new Point(-1, 5),
-				new Point(3, 1),
-				new Point(0, -2)
-		};
-
-		PointScanner scanner = new PointScanner(points, Algorithm.SelectionSort);
-
-		scanner.scan();
-
-		System.out.println(scanner.toString());
-
-		scanner.writeMCPToFile();
 	}
 	
 	
@@ -87,8 +73,21 @@ public class CompareSorters
 	 */
 	public static Point[] generateRandomPoints(int numPts, Random rand) throws IllegalArgumentException
 	{ 
-		return null; 
-		// TODO 
+		//return null;
+		// TODO
+		if (numPts < 1) {
+			throw new IllegalArgumentException();
+		}
+		Point[] points = new Point[numPts];
+
+		int min=-50;
+		int max=50;
+
+		for (int i = 0; i < numPts; i++) {
+			points[i] = new Point(rand.nextInt(max-min)+min, rand.nextInt(max-min)+min);
+		}
+
+		return points;
 	}
 	
 }

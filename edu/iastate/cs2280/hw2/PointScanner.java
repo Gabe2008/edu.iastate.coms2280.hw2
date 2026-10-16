@@ -9,6 +9,7 @@ package edu.iastate.cs2280.hw2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -205,7 +206,7 @@ public class PointScanner
 	{
 		// TODO
 		// 1. Define your output file name (and path)
-		String outputFileName = "output.txt";
+		/*String outputFileName = "output.txt";
 		Path outputPath = Paths.get(outputFileName);
 
 		// 2. Content to write
@@ -218,7 +219,12 @@ public class PointScanner
 		} catch (IOException e) {
 			//System.err.println("An error occurred while writing the file.");
 			e.printStackTrace();
-		}
+		}*/
+
+		String outputFileName = "output.txt";
+		PrintWriter writer = new PrintWriter(outputFileName);
+		writer.println(this);
+		writer.close();
 	}
 
 
