@@ -94,7 +94,28 @@ public class PointScanner
 		//     d) set the medianCoordinatePoint reference to the object with the correct coordinates.
 		//
 		//     e) sum up the times spent on the two sorting rounds and set the instance variable scanTime. 
-		
+
+		if(sortingAlgorithm == Algorithm.SelectionSort){
+			aSorter = new SelectionSorter(points);
+		} else if (sortingAlgorithm == Algorithm.InsertionSort) {
+			aSorter = new InsertionSorter(points);
+		} else if (sortingAlgorithm == Algorithm.MergeSort) {
+			aSorter = new MergeSorter(points);
+		} else {
+			aSorter = new QuickSorter(points);
+		}
+
+		scanTime = 0;
+
+		aSorter.setComparator(0);
+		aSorter.sort();
+		Point p1 = new Point(aSorter.getMedian().getX(), aSorter.getMedian().getY());
+
+		aSorter.setComparator(1);
+		aSorter.sort();
+		Point p2 = new Point(aSorter.getMedian().getX(), aSorter.getMedian().getY());
+
+		medianCoordinatePoint = new Point(p1.getX(), p1.getY());
 	}
 	
 	
