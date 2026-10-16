@@ -38,7 +38,17 @@ public class PointScanner
 	 */
 	public PointScanner(Point[] pts, Algorithm algo) throws IllegalArgumentException
 	{
-		
+		if(pts == null || pts.length == 0)
+		{
+			throw new IllegalArgumentException();
+		}
+		points = new Point[pts.length];
+		for(int i = 0; i < pts.length; i++)
+		{
+			points[i] = pts[i];
+		}
+
+		sortingAlgorithm = algo;
 	}
 
 	

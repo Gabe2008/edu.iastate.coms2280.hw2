@@ -52,7 +52,11 @@ public abstract class AbstractSorter
 		{
 			throw new IllegalArgumentException();
 		}
-		this.points = pts;
+		points = new Point[pts.length];
+		for(int i = 0; i < pts.length; i++)
+		{
+			points[i] = pts[i];
+		}
 	}
 
 		
@@ -80,10 +84,10 @@ public abstract class AbstractSorter
 		{
 			throw new IllegalArgumentException();
 		}
-		if(order == 0){
-			pointComparator = null;
-		} else{
-			pointComparator = null;
+		if (order == 0) {
+			pointComparator = new PointXComparator();
+		} else {
+			pointComparator = new PointYComparator();
 		}
 	}
 
@@ -116,7 +120,6 @@ public abstract class AbstractSorter
 	public void getPoints(Point[] pts)
 	{
 		// TODO
-		pts = new Point[points.length];
 		for(int i = 0; i < points.length; i++)
 		{
 			pts[i] = points[i];

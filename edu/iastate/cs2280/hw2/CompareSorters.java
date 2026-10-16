@@ -55,8 +55,8 @@ public class CompareSorters
 		//     c) After all four scans are done for the input, print out the statistics table from
 		//		  section 2.
 		//
-		// A sample scenario is given in Section 2 of the project description. 
-		
+		// A sample scenario is given in Section 2 of the project description.
+
 	}
 	
 	
