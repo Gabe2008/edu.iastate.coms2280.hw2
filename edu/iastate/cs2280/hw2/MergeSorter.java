@@ -29,7 +29,9 @@ public class MergeSorter extends AbstractSorter
 	 */
 	public MergeSorter(Point[] pts) 
 	{
-		// TODO  
+		// TODO
+		super(pts);
+		algorithm = "merge sort";
 	}
 
 
@@ -40,7 +42,8 @@ public class MergeSorter extends AbstractSorter
 	@Override 
 	public void sort()
 	{
-		// TODO 
+		// TODO
+		mergeSortRec(points);
 	}
 
 	
@@ -53,7 +56,46 @@ public class MergeSorter extends AbstractSorter
 	 */
 	private void mergeSortRec(Point[] pts)
 	{
-		
+		Point[] left = new Point[pts.length/2];
+		Point[] right = new Point[pts.length- left.length];
+		for(int i = 0; i < left.length; i++)
+		{
+			left[i] = pts[i];
+		}
+		for(int i = 0; i < right.length; i++)
+		{
+			right[i] = pts[i+left.length];
+		}
+
+		if(left.length > 1){
+			mergeSortRec(left);
+		}
+		if(right.length > 1){
+			mergeSortRec(right);
+		}
+
+		int i =0;
+		int j =0;
+		while( i < left.length && j < right.length)
+		{
+			if(pointComparator.compare(right[j], left[i]) < 0){
+				pts[i+j]=right[j];
+				j++;
+			} else {
+				pts[i+j]=left[i];
+				i++;
+			}
+		}
+
+		while(i < left.length){
+			pts[i+j]=left[i];
+			i++;
+		}
+
+		while(j < right.length){
+			pts[i+j]=right[j];
+			j++;
+		}
 	}
 
 	

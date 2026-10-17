@@ -31,7 +31,9 @@ public class QuickSorter extends AbstractSorter
 	 */
 	public QuickSorter(Point[] pts)
 	{
-		// TODO 
+		// TODO
+		super(pts);
+		algorithm = "quick sort";
 	}
 		
 
