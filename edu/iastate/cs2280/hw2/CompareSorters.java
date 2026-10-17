@@ -99,8 +99,8 @@ public class CompareSorters
 			scanners[3] = new PointScanner(pts, Algorithm.QuickSort);
 
 			scanners[0].scan();
-			/*scanners[1].scan();
-			scanners[2].scan();
+			scanners[1].scan();
+			/*scanners[2].scan();
 			scanners[3].scan();*/
 
 			System.out.printf("%-16s %-5s %-11s%n", "algorithm", "size", "time (ns)");
