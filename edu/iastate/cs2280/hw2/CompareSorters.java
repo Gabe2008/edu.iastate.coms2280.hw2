@@ -78,8 +78,6 @@ public class CompareSorters
 				return;
 			}
 
-			Point[] pts = null;
-
 			if(userChoice == 1){
 				System.out.print("Enter number of random points: ");
 				int points = 0;
@@ -90,13 +88,46 @@ public class CompareSorters
 					s.close();
 					return;
 				}
+
+				Point[] pts = null;
 				pts = generateRandomPoints(points, new Random());
+
+				scanners[0] = new PointScanner(pts, Algorithm.SelectionSort);
+				scanners[1] = new PointScanner(pts, Algorithm.InsertionSort);
+				scanners[2] = new PointScanner(pts, Algorithm.MergeSort);
+				scanners[3] = new PointScanner(pts, Algorithm.QuickSort);
 			}
 
-			scanners[0] = new PointScanner(pts, Algorithm.SelectionSort);
-			scanners[1] = new PointScanner(pts, Algorithm.InsertionSort);
-			scanners[2] = new PointScanner(pts, Algorithm.MergeSort);
-			scanners[3] = new PointScanner(pts, Algorithm.QuickSort);
+			if(userChoice == 2){
+				System.out.println("Points from a file");
+				System.out.print("File name: ");
+				String filename = s.nextLine();
+				try {
+					filename = s.nextLine();
+				} catch (java.util.InputMismatchException e) {
+					System.out.println(e.getMessage());
+					s.close();
+					return;
+				}
+				try {
+					PointScanner test = new PointScanner(filename, Algorithm.SelectionSort);
+				} catch (java.io.FileNotFoundException e) {
+					System.out.println(e.getMessage());
+					s.close();
+					return;
+				}
+				scanners[0] = new PointScanner(filename, Algorithm.SelectionSort);
+				scanners[1] = new PointScanner(filename, Algorithm.InsertionSort);
+				scanners[2] = new PointScanner(filename, Algorithm.MergeSort);
+				scanners[3] = new PointScanner(filename, Algorithm.QuickSort);
+
+			}
+
+			if(userChoice == 3){
+				break;
+			}
+
+			System.out.println();
 
 			scanners[0].scan();
 			scanners[1].scan();
