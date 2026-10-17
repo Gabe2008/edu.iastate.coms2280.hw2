@@ -44,7 +44,8 @@ public class QuickSorter extends AbstractSorter
 	@Override 
 	public void sort()
 	{
-		// TODO 
+		// TODO
+		quickSortRec(0,points.length-1);
 	}
 	
 	
@@ -57,6 +58,12 @@ public class QuickSorter extends AbstractSorter
 	private void quickSortRec(int first, int last)
 	{
 		// TODO
+		if(first < last)
+		{
+			int pivotIndex = partition(first, last);
+			quickSortRec(first, pivotIndex-1);
+			quickSortRec(pivotIndex+1, last);
+		}
 	}
 	
 	
@@ -70,7 +77,24 @@ public class QuickSorter extends AbstractSorter
 	private int partition(int first, int last)
 	{
 		// TODO 
-		return 0; 
+		//return 0;
+
+		Point pivot = points[last];
+		int i = first - 1;
+		for(int j = first; j < last; j++){
+			if(pointComparator.compare(points[j],pivot) < 0){
+				i++;
+				Point temp = points[i];
+				points[i] = points[j];
+				points[j] = temp;
+			}
+		}
+		i++;
+		Point temp = points[i];
+		points[i] = pivot;
+		points[last] = temp;
+
+		return i;
 	}	
 		
 

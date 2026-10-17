@@ -226,8 +226,4 @@ public class PointScanner
 		writer.println(this);
 		writer.close();
 	}
-
-
-
-
 }
