@@ -28,6 +28,7 @@ public class CompareSorters
 	 * 
 	 * @param args
 	 **/
+
 	public static void main(String[] args) throws FileNotFoundException
 	{		
 		// TODO 
@@ -63,10 +64,12 @@ public class CompareSorters
 
 		Scanner s = new Scanner(System.in);
 
+		int trial = 0;
 		while (true)
 		{
+			trial+=1;
 			int userChoice = 0;
-			System.out.println("Trial 1: ");
+			System.out.print("Trial "+trial+": ");
 			try {
                 userChoice = s.nextInt();
             } catch (java.util.InputMismatchException e) {
@@ -75,8 +78,10 @@ public class CompareSorters
 				return;
 			}
 
+			Point[] pts = null;
+
 			if(userChoice == 1){
-				System.out.println("Enter number of random points: ");
+				System.out.print("Enter number of random points: ");
 				int points = 0;
 				try {
 					points = s.nextInt();
@@ -85,8 +90,27 @@ public class CompareSorters
 					s.close();
 					return;
 				}
-
+				pts = generateRandomPoints(points, new Random());
 			}
+
+			scanners[0] = new PointScanner(pts, Algorithm.SelectionSort);
+			scanners[1] = new PointScanner(pts, Algorithm.InsertionSort);
+			scanners[2] = new PointScanner(pts, Algorithm.MergeSort);
+			scanners[3] = new PointScanner(pts, Algorithm.QuickSort);
+
+			scanners[0].scan();
+			/*scanners[1].scan();
+			scanners[2].scan();
+			scanners[3].scan();*/
+
+			System.out.printf("%-16s %-5s %-11s%n", "algorithm", "size", "time (ns)");
+			System.out.println("----------------------------------");
+			System.out.println(scanners[0].stats());
+			System.out.println(scanners[1].stats());
+			System.out.println(scanners[2].stats());
+			System.out.println(scanners[3].stats());
+			System.out.println("----------------------------------");
+			System.out.println();
 		}
 	}
 	

@@ -34,7 +34,6 @@ public class PointScanner
 	                                      // the x coordinates and y coordinates of those points in the array points[].
 	private Algorithm sortingAlgorithm;
 
-
 	protected long scanTime; 	       // execution time in nanoseconds.
 
 	/**
@@ -177,7 +176,8 @@ public class PointScanner
 	{
 		//return null;
 		// TODO
-		return sortingAlgorithm+" "+points.length+" "+scanTime;
+		//return sortingAlgorithm+" "+points.length+" "+scanTime;
+		return String.format("%-16s %-5s %-11d", sortingAlgorithm, points.length, scanTime);
 	}
 
 
