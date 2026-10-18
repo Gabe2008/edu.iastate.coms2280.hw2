@@ -58,7 +58,7 @@ public class CompareSorters
 		//
 		// A sample scenario is given in Section 2 of the project description.
 
-		System.out.println("Performances of Four Sorting Algorithm in Point Scanning");
+		System.out.println("Performances of Four Sorting Algorithms in Point Scanning");
 		System.out.println();
 		System.out.println("keys: 1 (random integers) 2 (file input) 3 (exit)");
 
@@ -96,9 +96,7 @@ public class CompareSorters
 				scanners[1] = new PointScanner(pts, Algorithm.InsertionSort);
 				scanners[2] = new PointScanner(pts, Algorithm.MergeSort);
 				scanners[3] = new PointScanner(pts, Algorithm.QuickSort);
-			}
-
-			if(userChoice == 2){
+			} else if(userChoice == 2){
 				System.out.println("Points from a file");
 				System.out.print("File name: ");
 				String filename = s.nextLine();
@@ -121,10 +119,12 @@ public class CompareSorters
 				scanners[2] = new PointScanner(filename, Algorithm.MergeSort);
 				scanners[3] = new PointScanner(filename, Algorithm.QuickSort);
 
-			}
-
-			if(userChoice == 3){
+			} else if(userChoice == 3){
 				break;
+			} else {
+				System.out.println("Invalid choice");
+				s.close();
+				return;
 			}
 
 			System.out.println();
@@ -149,7 +149,7 @@ public class CompareSorters
 	/**
 	 * This method generates a given number of random points.
 	 * The coordinates of these points are pseudo-random numbers within the range 
-	 * [-50,50] × [-50,50]. Please refer to Section 3 on how such points can be generated.
+	 * [-50,50] x [-50,50]. Please refer to Section 3 on how such points can be generated.
 	 * 
 	 * Ought to be private. Made public for testing. 
 	 * 
@@ -170,7 +170,7 @@ public class CompareSorters
 		int max=50;
 
 		for (int i = 0; i < numPts; i++) {
-			points[i] = new Point(rand.nextInt(max-min)+min, rand.nextInt(max-min)+min);
+			points[i] = new Point(rand.nextInt(max-min+1)+min, rand.nextInt(max-min+1)+min);
 		}
 
 		return points;
