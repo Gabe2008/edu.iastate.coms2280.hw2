@@ -2,6 +2,12 @@
 
 package edu.iastate.cs2280.hw2;
 
+/**
+ *
+ * @author Claude
+ *
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;

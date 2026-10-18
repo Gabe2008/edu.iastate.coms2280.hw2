@@ -1,5 +1,11 @@
 package edu.iastate.cs2280.hw2;
 
+/**
+ *
+ * @author Gabriel Vesperman
+ *
+ */
+
 import java.util.Comparator;
 
 public class PointXComparator implements Comparator<Point> {

@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 
 /**
  *  
- * @author
+ * @author Gabriel Vesperman
  *
  */
 
