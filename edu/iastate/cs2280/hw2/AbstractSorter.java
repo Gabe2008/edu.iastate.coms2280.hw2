@@ -108,8 +108,8 @@ public abstract class AbstractSorter
 	 */
 	public Point getMedian()
 	{
-		//return points[points.length/2];
-		return points[(points.length-1)/2];
+		return points[points.length/2];
+		//return points[(points.length-1)/2];
 	}
 	
 	
