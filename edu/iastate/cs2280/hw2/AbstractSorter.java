@@ -50,7 +50,7 @@ public abstract class AbstractSorter
 		// TODO
 		if(pts == null || pts.length == 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Array of points is null or empty");
 		}
 		points = new Point[pts.length];
 		for(int i = 0; i < pts.length; i++)

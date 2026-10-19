@@ -88,10 +88,10 @@ public class PointScanner
 
 		scanner.close();
 
-		if (pointList.isEmpty())
+		/*if (pointList.isEmpty())
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 
 		points = new Point[pointList.size()];
 		for(int i = 0; i < points.length; i++){

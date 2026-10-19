@@ -565,9 +565,15 @@ class HW2Test {
     }
 
     @Test
-    void fileConstructorRejectsEmptyFile() throws Exception {
+    void scanningAFileWithNoPointsThrowsIllegalArgument() throws Exception {
+        // The file constructor itself is not required to throw for an empty file (per its Javadoc).
+        // Whichever step notices first (constructor or scan), an empty file must never be sorted silently.
         String empty = tempFile("");
-        assertThrows(IllegalArgumentException.class, () -> new PointScanner(empty, Algorithm.QuickSort));
+        String blank = tempFile("  \n\t\n");
+        for (Algorithm a : ALL) {
+            assertThrows(IllegalArgumentException.class, () -> new PointScanner(empty, a).scan());
+            assertThrows(IllegalArgumentException.class, () -> new PointScanner(blank, a).scan());
+        }
     }
 
     // ================================================================ PointScanner: output
@@ -775,5 +781,12 @@ class HW2Test {
         InputMismatchException e = assertThrows(InputMismatchException.class,
                 () -> new PointScanner(odd, Algorithm.SelectionSort));
         assertNotNull(e.getMessage(), "exception should carry a message");
+    }
+
+    @Test
+    void mainStopsPolitelyWhenTheFileHasNoPoints() throws Exception {
+        String empty = tempFile("");
+        String out = runMain("2\n" + empty + "\n");   // must not throw
+        assertFalse(out.contains("QuickSort"), "no table expected:\n" + out);
     }
 }

@@ -1,0 +1,58 @@
+HW2 stress-test input files
+============================================================
+How to use: run CompareSorters, press 2, then type the file name
+(put the files in your project folder, or type the full path).
+
+Files 01-16 should print a table with four rows, all with the size shown below.
+The MCP is not printed by main; it is checked by the HW2Test classes or by calling
+scan() and toString() yourself. Expected MCP uses the starter getMedian() (index n/2).
+
+file                               points  expected MCP
+----------------------------------------------------------------------
+01_max_random_10201.txt             10201  (0, -1)
+                                           - 10,201 random points (max size, duplicates likely)
+02_full_grid_shuffled.txt           10201  (0, 0)
+                                           - every point in [-50,50]x[-50,50] exactly once, shuffled
+03_full_grid_sorted.txt             10201  (0, 0)
+                                           - full grid already sorted by x then y (quicksort / insertion best-worst case)
+04_full_grid_reverse.txt            10201  (0, 0)
+                                           - full grid in reverse order (insertion sort worst case)
+05_all_identical_10201.txt          10201  (7, -7)
+                                           - 10,201 copies of (7, -7) (quicksort recursion-depth worst case)
+06_heavy_duplicates_10201.txt       10201  (0, 0)
+                                           - 10,201 points but only 9 distinct values
+07_one_point.txt                        1  (-3, 4)
+                                           - a single point
+08_two_points.txt                       2  (10, 10)   [if index (n-1)/2 were used: (-10, -10)]
+                                           - two points (even count)
+09_three_points.txt                     3  (0, 0)
+                                           - three points, diagonal
+10_corners_and_extremes.txt             7  (0, 0)
+                                           - extreme values at the edges of the range, with duplicates
+11_one_vertical_line.txt              101  (0, 0)
+                                           - all x equal (ties on x everywhere)
+12_one_horizontal_line.txt            101  (0, 0)
+                                           - all y equal (ties on y everywhere)
+13_all_negative.txt                   501  (-26, -27)
+                                           - 501 points, all coordinates negative
+14_spec_example.txt                    17  (0, 1)
+                                           - the 17-point example from the assignment PDF (expected MCP (0, 1))
+15_messy_whitespace.txt                 5  (5, 6)
+                                           - tabs, runs of spaces, blank lines, points split across lines (10 ints -> 5 points)
+16_one_big_line.txt                  2000  (-1, 2)   [if index (n-1)/2 were used: (-1, 1)]
+                                           - 2,000 points all on a single line
+
+Files that should be REJECTED
+----------------------------------------------------------------------
+X1_odd_number_of_ints.txt
+    EXPECTED ERROR: 5 integers (odd) -> InputMismatchException
+X2_single_int.txt
+    EXPECTED ERROR: 1 integer
+X3_empty_file.txt
+    EXPECTED ERROR: empty file (no points)
+X4_only_whitespace.txt
+    EXPECTED ERROR: only whitespace (no points)
+
+Odd-count files are rejected by the PointScanner constructor with InputMismatchException;
+your main prints its message and stops. Empty / whitespace-only files throw
+IllegalArgumentException from the constructor (see the note in the chat).

@@ -132,11 +132,20 @@ public class CompareSorters
 			}
 
 			System.out.println();
-
-			scanners[0].scan();
+			try{
+				scanners[0].scan();
+				scanners[1].scan();
+				scanners[2].scan();
+				scanners[3].scan();
+			} catch (java.lang.IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+				s.close();
+				return;
+			}
+			/*scanners[0].scan();
 			scanners[1].scan();
 			scanners[2].scan();
-			scanners[3].scan();
+			scanners[3].scan();*/
 
 			System.out.printf("%-16s %-5s %-11s%n", "algorithm", "size", "time (ns)");
 			System.out.println("----------------------------------");
