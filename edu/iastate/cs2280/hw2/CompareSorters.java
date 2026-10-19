@@ -113,6 +113,10 @@ public class CompareSorters
 					System.out.println(e.getMessage());
 					s.close();
 					return;
+				} catch (java.util.InputMismatchException e) {
+					System.out.println(e.getMessage());
+					s.close();
+					return;
 				}
 				scanners[0] = new PointScanner(filename, Algorithm.SelectionSort);
 				scanners[1] = new PointScanner(filename, Algorithm.InsertionSort);

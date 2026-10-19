@@ -79,7 +79,7 @@ public class PointScanner
 			if (!scanner.hasNextInt())
 			{
 				scanner.close();
-				throw new InputMismatchException();
+				throw new InputMismatchException("File has odd number of ints");
 			}
 
 			int y = scanner.nextInt();
